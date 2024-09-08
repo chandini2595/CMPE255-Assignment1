@@ -7,7 +7,7 @@ Implement the features of advanced colab tutorials in my slides and provide them
 
 I have implemented all code which has shown in Derek Banas video and advanved colab tutorials and uploaded the same.
 
-Assignment2:
+**Assignment2:**
 Use  AI Pair Programmer ( either use claudedev (github), or cursor.so (paid) or Github copilot paid - students discount).
 You need to provide video of you using github copilot in visual studio code and having it code some interesting projects.
 You can add any other coding like backend, frontend and html demos if you want.
@@ -17,4 +17,9 @@ Link: https://www.youtube.com/watch?v=0O-hNikSbDE
 The below files which I used are uploaded here.
 1. app.py
 2. index.html
+
+**Assignment3:**
+Auto ML with akkio or jadbio or any other good zero code automl - trial version
+Get akkio.com freeaccount,  demonstrate one (or more if you are interested)  end2end ml project in jadbio (no code project) 
+
 
