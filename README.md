@@ -12,7 +12,7 @@ Use  AI Pair Programmer ( either use claudedev (github), or cursor.so (paid) or 
 You need to provide video of you using github copilot in visual studio code and having it code some interesting projects.
 You can add any other coding like backend, frontend and html demos if you want.
 
-I have developed a game tic tac toe using Github Copilot and uploaded the video in youtube.
+I have developed a game Memory Matching Mania using Github Copilot and uploaded the video in youtube.
 Link: https://www.youtube.com/watch?v=o_YyIb9khZw
 The below files which I used are uploaded here.
 1. app.py
