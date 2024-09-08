@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
+    <title>Memory Matching Game</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             background-color: #f0f0f0;
         }
         .board {
             display: grid;
-            grid-template-columns: repeat(3, 100px);
-            gap: 5px;
+            grid-template-columns: repeat(4, 100px);
+            gap: 10px;
         }
-        .cell {
+        .card {
             width: 100px;
             height: 100px;
             background-color: white;
@@ -29,6 +30,10 @@
             font-size: 2em;
             cursor: pointer;
         }
+        .flipped {
+            background-color: #4CAF50;
+            color: white;
+        }
         button {
             margin-top: 20px;
             padding: 10px 20px;
@@ -37,35 +42,35 @@
     </style>
 </head>
 <body>
-    <div>
-        <div id="status">Player X's turn</div>
-        <div class="board" id="board"></div>
-        <button onclick="resetGame()">Reset Game</button>
-    </div>
+    <div class="board" id="board"></div>
+    <button onclick="resetGame()">Reset Game</button>
     <script>
         const boardElement = document.getElementById('board');
-        const statusElement = document.getElementById('status');
 
         function renderBoard(board) {
             boardElement.innerHTML = '';
-            board.forEach((cell, index) => {
-                const cellElement = document.createElement('div');
-                cellElement.className = 'cell';
-                cellElement.innerText = cell;
-                cellElement.onclick = () => makeMove(index);
-                boardElement.appendChild(cellElement);
+            board.forEach((card, index) => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'card';
+                if (card.flipped) {
+                    cardElement.classList.add('flipped');
+                    cardElement.innerText = card.value;
+                }
+                cardElement.onclick = () => flipCard(index);
+                boardElement.appendChild(cardElement);
             });
         }
 
         async function fetchGameState() {
-            const response = await fetch('/state');
+            const response = await fetch('/init', {
+                method: 'POST'
+            });
             const gameState = await response.json();
             renderBoard(gameState.board);
-            updateStatus(gameState);
         }
 
-        async function makeMove(index) {
-            const response = await fetch('/move', {
+        async function flipCard(index) {
+            const response = await fetch('/flip', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -74,10 +79,6 @@
             });
             const gameState = await response.json();
             renderBoard(gameState.board);
-            updateStatus(gameState);
-            if (gameState.winner) {
-                alert(`Player ${gameState.winner} wins!`);
-            }
         }
 
         async function resetGame() {
@@ -86,15 +87,6 @@
             });
             const gameState = await response.json();
             renderBoard(gameState.board);
-            updateStatus(gameState);
-        }
-
-        function updateStatus(gameState) {
-            if (gameState.winner) {
-                statusElement.innerText = `Player ${gameState.winner} wins!`;
-            } else {
-                statusElement.innerText = `Player ${gameState.current_player}'s turn`;
-            }
         }
 
         fetchGameState();
