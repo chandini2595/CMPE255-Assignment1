@@ -22,4 +22,26 @@ The below files which I used are uploaded here.
 Auto ML with akkio or jadbio or any other good zero code automl - trial version
 Get akkio.com freeaccount,  demonstrate one (or more if you are interested)  end2end ml project in jadbio (no code project) 
 
+I have created akkio free account and developed Customer Churn prediction Machine Learning model by using it.
+Youtube link: https://youtu.be/jWjwROzuELI
+
+Customer Churn prediction : This project helps us to find which customers will continue doing business which customers don't.
+Dataset: I have used kaggle dataset for this project and have many columns like customerID, gender, SeniorCitizen, Partner, churn....
+The model has splitted the dataset into testing and training automatically and did feature training, selected the best algorithm for the task. The model performance is calculated based on several metrics like accuracy, precision, recall...
+It visualizes the data in the form of graphs, charts and all..
+The model can deploy our model using API.
+
+
+Akkio.com provides:
+1. User friendly interface
+2. Zero Code (Totally UI based)
+3. Data cleaning
+4. AutoML
+5. Model Evaluation
+6. Prediction
+7. Deployment
+8. Visualization
+
+
+
 
